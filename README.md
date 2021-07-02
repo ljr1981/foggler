@@ -6,6 +6,15 @@ Foggler has a single purpose: input BDD specification text files and then output
 
 From the command-line, call `foggler.exe` with the name of your BDD spec `*.txt` file (e.g. `foggler my_bdd_spec.txt`). Within seconds, you will have a matching generated Eiffel class file that you can include in your EiffelStudio™ project!
 
+## Future Plan
+Your feedback is welcome! Plus use the facilities of GitHub to make your suggestions for new features or to report bugs and defects. I will respond with changes as fast as I can (I have a life just like you, right?) 🦖
+
+From where I sit (for my purposes):
+
+1. Arguments — ensure all defined routine arguments are parsed and well-formed in the generated code.
+2. Generate TDD (EiffelStudio™ AutoTest™) unit and integration test code that will compile, but initially fails (in keeping with the TDD paradigm of write-failing-test-first).
+3. Include Data — standardize "test data" representation grammar in the source BDD specification and teach Foggler how to generate and consume it in tests (if possible).
+
 ## A Little BDD
 BDD is really just TDD "explained well", according to Mr. Dave Farley, who ought to know because he was there when it was invented. See YouTube and search for [Dave Farley of Continuous Development, LLC](https://www.youtube.com/c/ContinuousDelivery) for more information.
 
