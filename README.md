@@ -9,6 +9,9 @@ Foggler was inspired by [Cucumber and Gherkin](https://cucumber.io/tools/cucumbe
 From the command-line, call `foggler.exe` with the name of your BDD spec `*.txt` file (e.g. `foggler my_bdd_spec.txt`). Within seconds, you will have a matching generated Eiffel class file that you can include in your EiffelStudio™ project!
 
 ## Future Plan
+
+    Release notes are found at the end of this readme.
+
 Your feedback is welcome! Plus use the facilities of GitHub to make your suggestions for new features or to report bugs and defects. I will respond with changes as fast as I can (I have a life just like you, right?) 🦖
 
 From where I sit (for my purposes):
