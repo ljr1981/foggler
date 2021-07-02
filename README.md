@@ -14,7 +14,7 @@ Your feedback is welcome! Plus use the facilities of GitHub to make your suggest
 From where I sit (for my purposes):
 
 1. Arguments — ensure all defined routine arguments are parsed and well-formed in the generated code.
-2. Generate TDD (Test Driven Development) (EiffelStudio™ AutoTest™) unit and integration test code that will compile, but initially fails (in keeping with the TDD paradigm of write-failing-test-first).
+2. Generate TDD ([Test Driven Development](https://en.wikipedia.org/wiki/Test-driven_development)) (EiffelStudio™ AutoTest™) unit and integration test code that will compile, but initially fails (in keeping with the TDD paradigm of write-failing-test-first).
 3. Include Data — standardize "test data" representation grammar in the source BDD specification and teach Foggler how to generate and consume it in tests (if possible).
 4. GUI — write a GUI app for both Windows and Linux
 5. Linux — create a Linux CLI app with installer
