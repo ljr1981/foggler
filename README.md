@@ -282,8 +282,8 @@ There are a number of sources and resources that have inspired this work and con
 [How to Measure Anything](https://www.google.com/books/edition/How_to_Measure_Anything/F0i6pwAACAAJ?hl=en)
 
 # Release Notes
-## 0.0.0.1 — Initial Release
-## 0.0.0.2 — Bug Fix
-- Fixed an indenting issue with the `end` keyword at the end of command (method) routines.
-## 0.0.0.3 — Added Logging
+## version 0.0.0.3 — Added Logging
 - Added logging facility code. Nothing is presently being logged, but the capacity is there. Now, it is time to decide what would be helpful to know from a log file (`system.log`) for Foggler.
+## version 0.0.0.2 — Bug Fix
+- Fixed an indenting issue with the `end` keyword at the end of command (method) routines.
+## version 0.0.0.1 — Initial Release
