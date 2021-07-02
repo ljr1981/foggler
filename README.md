@@ -1,5 +1,5 @@
 # Foggler
-A BDD Spec to Eiffel Class and Test Class Generator
+A BDD (Behavior Driven Dev) Spec to Eiffel Class and Test Class Generator
 
 ## Introduction
 Foggler has a single purpose: input BDD specification text files and then output raw Eiffel class code `{*_IMP}` in `*.e` files.
@@ -14,7 +14,7 @@ Your feedback is welcome! Plus use the facilities of GitHub to make your suggest
 From where I sit (for my purposes):
 
 1. Arguments — ensure all defined routine arguments are parsed and well-formed in the generated code.
-2. Generate TDD (EiffelStudio™ AutoTest™) unit and integration test code that will compile, but initially fails (in keeping with the TDD paradigm of write-failing-test-first).
+2. Generate TDD (Test Driven Development) (EiffelStudio™ AutoTest™) unit and integration test code that will compile, but initially fails (in keeping with the TDD paradigm of write-failing-test-first).
 3. Include Data — standardize "test data" representation grammar in the source BDD specification and teach Foggler how to generate and consume it in tests (if possible).
 4. GUI — write a GUI app for both Windows and Linux
 5. Linux — create a Linux CLI app with installer
@@ -26,7 +26,7 @@ From where I sit (for my purposes):
 4. CI/CD Pipeline — because this is a CLI app, you ought to be able to include it in a CI/CD pipeline. This might mean that Foggler needs some logging for metrics purposes. 
 
 ## A Little BDD
-BDD is really just TDD "explained well", according to Mr. Dave Farley, who ought to know because he was there when it was invented. See YouTube and search for [Dave Farley of Continuous Development, LLC](https://www.youtube.com/c/ContinuousDelivery) for more information.
+BDD is really just TDD (Test Driven Development) "explained well", according to Mr. Dave Farley, who ought to know because he was there when it was invented. See YouTube and search for [Dave Farley of Continuous Development, LLC](https://www.youtube.com/c/ContinuousDelivery) for more information.
 
 In Eiffel terms, BDD is really just TDD (AutoTest™ tool and code) coupled with Eiffel Design-by-Contract™ (or DbC for short). TDD people will understand DbC as `checking`, except DbC brings the `checking code` internal to the production code as assertions directly applied to classes, routines, and loops.
 
