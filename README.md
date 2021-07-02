@@ -251,7 +251,7 @@ feature -- Basic Operations
 			-- the Maker starts a game.
 		ensure
 			is_awaiting_join   -- the Maker waits for a Breaker to join.
-	end
+		end
 
 	breaker_join_game  
 			-- Breaker joins a Makers game.
@@ -262,7 +262,7 @@ feature -- Basic Operations
 		ensure
 			is_valid_guess   -- the Breaker must guess a word with 5 characters.
 			and then is_same_word   -- the Breaker must guess the exact word!
-	end
+		end
 
 
 
