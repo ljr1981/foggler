@@ -274,3 +274,9 @@ note
 
 end
 ```
+# External Links & References
+There are a number of sources and resources that have inspired this work and continue to shape it.
+
+[AB Testing Podcast](https://open.spotify.com/show/1CrWfV0KNH9HevtsFut1iI)
+[Theory of Constraints](https://en.wikipedia.org/wiki/Theory_of_constraints)
+[How to Measure Anything](https://www.google.com/books/edition/How_to_Measure_Anything/F0i6pwAACAAJ?hl=en)
