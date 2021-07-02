@@ -1,5 +1,5 @@
 # Foggler
-BDD Spec to Eiffel Class and Test Class Generator
+A BDD Spec to Eiffel Class and Test Class Generator
 
 ## Introduction
 Foggler has a single purpose: input BDD specification text files and then output raw Eiffel class code `{*_IMP}` in `*.e` files.
