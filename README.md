@@ -28,6 +28,9 @@ From where I sit (for my purposes):
 3. **Win Binary** — small size matters! The Windows binary is but 1.9MB in size. As such, it is very fast. Also, the dead-code stripping is set to all (not just features), which makes the binary even smaller still!
 4. **CI/CD Pipeline** — because this is a CLI app, you ought to be able to include it in a CI/CD pipeline. This might mean that Foggler needs some logging for metrics purposes. 
 
+## Acknowledgements
+None of this would be possible without the facilities of the Gobosoft Gobo libraries! Specifically, I used the [Gelex parser/lexer](http://www.gobosoft.com/eiffel/gobo/gelex/index.html) to specify and generate the scanner code, which parses the BDD specification text files.
+
 ## A Little BDD
 **BDD** is really just **TDD** (Test Driven Development) "explained well", according to **Mr. Dave Farley**, who ought to know because he was there when it was invented. See *YouTube* and search for [Dave Farley of Continuous Development, LLC](https://www.youtube.com/c/ContinuousDelivery) for more information.
 
