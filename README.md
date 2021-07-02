@@ -12,7 +12,7 @@ From the command-line, call `foggler.exe` with the name of your BDD spec `*.txt`
 
     Release notes are found at the end of this readme.
 
-Your feedback is welcome! Plus use the facilities of GitHub to make your suggestions for new features or to report bugs and defects. I will respond with changes as fast as I can (I have a life just like you, right?) 🦖
+Your feedback is welcome! Plus—use the facilities of GitHub to make your suggestions for new features or to report bugs and defects. I will respond with changes as fast as I can (I have a life just like you, right?) 🦖
 
 From where I sit (for my purposes):
 
