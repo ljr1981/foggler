@@ -1,10 +1,10 @@
 # Foggler
-A BDD ([Behavior Driven Development](https://en.wikipedia.org/wiki/Behavior-driven_development)) Spec to Eiffel Class and Test Class Generator
+A BDD ([Behavior Driven Development](https://en.wikipedia.org/wiki/Behavior-driven_development)) Spec to [Eiffel](https://www.eiffel.org) Class and Test Class Generator
 
 ## Introduction
 Foggler has a single purpose: input BDD specification text files and then output raw Eiffel class code `{*_IMP}` in `*.e` files.
 
-Foggler was inspired by Cucumber and Gherkin, but is being adapted for generating Eiffel code for consumption in EiffelStudio™.
+Foggler was inspired by Cucumber and Gherkin, but is being adapted for generating Eiffel code for consumption in [EiffelStudio™](https://www.eiffel.com/eiffelstudio/).
 
 From the command-line, call `foggler.exe` with the name of your BDD spec `*.txt` file (e.g. `foggler my_bdd_spec.txt`). Within seconds, you will have a matching generated Eiffel class file that you can include in your EiffelStudio™ project!
 
