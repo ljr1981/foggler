@@ -1,2 +1,257 @@
-# foggler
-Foggler - A BDD to Eiffel Code Generator
+# Foggler
+BDD Spec to Eiffel Class and Test Class Generator
+
+## Introduction
+Foggler has a single purpose: input BDD specification text files and then output raw Eiffel class code `{*_IMP}` in `*.e` files.
+
+From the command-line, call `foggler.exe` with the name of your BDD spec `*.txt` file (e.g. `foggler my_bdd_spec.txt`). Within seconds, you will have a matching generated Eiffel class file that you can include in your EiffelStudio™ project!
+
+## A Little BDD
+BDD is really just TDD "explained well", according to Mr. Dave Farley, who ought to know because he was there when it was invented. See YouTube and search for [Dave Farley of Continuous Development, LLC](https://www.youtube.com/c/ContinuousDelivery) for more information.
+
+In Eiffel terms, BDD is really just TDD (AutoTest™ tool and code) coupled with Eiffel Design-by-Contract™ (or DbC for short). TDD people will understand DbC as `checking`, except DbC brings the `checking code` internal to the production code as assertions directly applied to classes, routines, and loops.
+
+Traditionally, BDD generally consists of Scenarios. Each Scenario consists of steps, broken down as Given/When/Then. Each step can consist of one or more steps. For example, one can write `Given this And not that`, where `this` and `that` are Boolean assertions. In this case, `this` evaluates to `True` and `that` evaluates to `False`. In this case, the `this` assertion is a Given step, and the `that` is an "and'd" substep.
+
+So—we have BDD Specifications, consisting of one or more Scenarios, which (in turn) can consist of Given/When/Then steps, and each of those will have one step and perhaps more substeps.
+
+The Given and Then steps (and substeps) are Boolean assertions, whereas the When step (part) corresponds to the `do ... end` code in Eiffel. Therefore, the When step(s) are Command features (Method routines). The Given and Then steps are Query features (Function routines).
+
+## First Example
+Consider the following example BDD specification.
+
+Illustrating Specification using Examples:
+```
+Scenarios are specified using the Given-When-Then structure to create a testable specification −
+
+Given <some precondition>
+And <additional preconditions> Optional
+When <an action/trigger occurs>
+Then <some post condition>
+And <additional post conditions> Optional
+```
+
+### Quick Markdown Guide
+```
+  ' ... ' = Descriptive text (i.e. comments, and so on)
+  < ... > = Class name (i.e. goes with Title:)
+  # ... # = Comment
+  [ ... ] = Command (Method) name
+  ( ... ) = Arguments (of Command Method)
+  ? ... ? = Query (Function) name (e.g. ?query_name:[True|False]?)
+```
+NOTE: Comments are completely ignored (e.g. they are not a part of the generated code).
+
+### Example Specification
+Our Customer wants to create a "Guess the Word" game. Our Business Analyst (BA) is responsible for writing one or more BDD specifications that capture the needs and wants of the Customer.
+
+In this case, the game consists of two players—the Maker and the Breaker. The Maker creates a random word and the Breaker has to guess it. The goal is to guess the word in as few tries as possible.
+
+NOTE: Do not read too much into the BDD specification given. It is not here to be "correct" or "complete", but is here to demonstrate Queely's ability to consume the BA's BDD specification and output an Eiffel class based on it. As such, the BDD specification (below) is rather incorrect and incomplete, so (for the moment) we will just ignore these glaring and obvious facts!
+
+```
+Title: 'Guess the word game.'
+        <WORD_GUESS_GAME>
+
+#The first example has three steps.#
+Scenario: 'Maker starts a game.'
+           [maker_start_game] (target_word:"silky")
+  Given: 'no game is started.' 
+          ?is_game_started:False?
+     And: 'has maker' ?has_maker:True?
+     But: 'not started by auto-magic' 
+           ?is_auto_magic_started:False?
+  When: 'the Maker starts a game.'
+     And: 'old breaker is reset' 
+           ?is_break_reset:True?
+  Then: 'the Maker waits for a Breaker to join.' 
+         ?is_awaiting_join:True?
+
+#The second example has three steps.#
+Scenario: 'Breaker joins a Makers game.' 
+           [breaker_join_game]
+  Given: 'the Maker has started a game with the word "silky".' 
+          ?is_started_with_word:True?
+  When: 'the Breaker joins the Makers game.'
+  Then: 'the Breaker must guess a word with 5 characters.' 
+         ?is_valid_guess:True?
+    And: 'the Breaker must guess the exact word!'
+    		?is_same_word:True?
+```
+
+## By the Numbers
+Let's break that down, showing each BDD specification part with the corresponding generated code.
+
+### Title Part & Class Header
+The `Title:` part generates the Eiffel class header.
+
+```
+Title: 'Guess the word game.'
+        <WORD_GUESS_GAME>
+```
+Results in ...
+```
+--|BDD Specification
+note
+	warning: "DO NOT EDIT--THIS IS GENERATED CODE!!!"
+	description: "Guess the word game."
+
+deferred class
+	WORD_GUESS_GAME_IMP
+```
+The `Guess the word game.` string is used for the class `note` description. The note clause also includes a `warning` against editing the class as subsequent modifications to the source BDD specification and subsequent regeneration will possibly overwrite the class text, thereby destroying your edits. It is better to inherit from the `IMP` class and then modify the descendent (sub) class.
+
+### Scenario Part & Generated Code
+Each BDD Scenario part will generate some corresponding code. For example:
+
+```
+Scenario: 'Maker starts a game.'
+           [maker_start_game] (target_word:"silky")	   
+```
+This BDD (above) generates an Eiffel Command (Method) feature:
+```
+	maker_start_game (a_target_word: STRING) 
+			-- Maker starts a game.
+```
+The `[maker_start_game]` is used to create the feature (routine) and the `(target_word:"silky")` becomes the argument(s) passed to it.
+
+Note that `"silky"` has been translated by Queely into `STRING`. Queely understands the notion of "basic types" (like STRING), using the enclosing double-quotes as a signal to compute the corresponding argument type. Queely also knows about CHARACTER, INTEGER, REAL, and BOOLEAN. Anything else is translated as type {ANY}.
+
+### Given Part(s) & Generated Code
+Each BDD Given part consists of one step and one or more possible substeps. The substeps are either And or But. The intent of the But substep is negation, but use it only if it makes sense to you as you can write `And: 'not this' ?is_this:False?`, which wil result in `and not is_this`. The "But version" would look like: `But 'not this' ?is_this:False?`. Therefore, you get to choose which reads more accurately to you.
+
+```
+  Given: 'no game is started.' 
+          ?is_game_started:False?
+     And: 'has maker' ?has_maker:True?
+     But: 'not started by auto-magic' 
+           ?is_auto_magic_started:False?
+```
+The resulting code looks like:
+```
+		require
+			not is_game_started   -- no game is started.
+			and then has_maker   -- has maker
+			and then not is_auto_magic_started   -- not started by auto-magic
+```
+Notice that the Descriptive parts (e.g. `'no game is started.'`) is generated as a comment after the DbC contract assertion (e.g. `require`). Each Query (Function) routine specification (e.g. `?is_game_started:False?`) is generated as a call to a Boolean Query (Function) feature in Eiffel (e.g. `not is_game_started `).
+
+This brings us to where we must also mention that Queely also generates the Query (Function) deferred features. In the example above, there are three:
+```
+	is_game_started: BOOLEAN
+			-- no game is started.
+		deferred
+		end
+```
+```
+	has_maker: BOOLEAN
+			-- has maker
+		deferred
+		end
+```
+```
+	is_auto_magic_started: BOOLEAN
+			-- not started by auto-magic
+		deferred
+		end
+```
+Therefore, when Queely sees the Boolean assertions of the Given and Then parts, it not only generates the corresponding assertion contracts in the Scenario Command (Method) feature, but also the corresponding Query (Function) features. Both the Command (Method) and Query (Function) features are generated as deferred. This means that you must provide implementation code in a descendent class to properly effect the code. In terms of BDD, we say that the `{*_IMP}` class is the `What?`, whereas the descendent (sub) class you write is the `How?`.
+
+## The ENTIRE Generated Class
+Here is the entire class generated by Queely from the BDD specification show above.
+```
+--|BDD Specification
+note
+	warning: "DO NOT EDIT--THIS IS GENERATED CODE!!!"
+	description: "Guess the word game."
+
+deferred class
+	WORD_GUESS_GAME_IMP
+	
+feature -- Access
+
+
+
+feature -- Settings
+
+
+
+feature -- Status Reports
+
+	has_maker: BOOLEAN
+			-- has maker
+		deferred
+		end
+
+	is_auto_magic_started: BOOLEAN
+			-- not started by auto-magic
+		deferred
+		end
+
+	is_game_started: BOOLEAN
+			-- no game is started.
+		deferred
+		end
+
+	is_break_reset: BOOLEAN
+			-- old breaker is reset
+		deferred
+		end
+
+	is_awaiting_join: BOOLEAN
+			-- the Maker waits for a Breaker to join.
+		deferred
+		end
+
+	is_started_with_word: BOOLEAN
+			-- the Maker has started a game with the word "silky".
+		deferred
+		end
+
+	is_same_word: BOOLEAN
+			-- the Breaker must guess the exact word!
+		deferred
+		end
+
+	is_valid_guess: BOOLEAN
+			-- the Breaker must guess a word with 5 characters.
+		deferred
+		end
+
+
+
+feature -- Basic Operations
+
+	maker_start_game (a_target_word: STRING) 
+			-- Maker starts a game.
+		require
+			not is_game_started   -- no game is started.
+			and then has_maker   -- has maker
+			and then not is_auto_magic_started   -- not started by auto-magic
+		deferred
+			-- the Maker starts a game.
+		ensure
+			is_awaiting_join   -- the Maker waits for a Breaker to join.
+	end
+
+	breaker_join_game  
+			-- Breaker joins a Makers game.
+		require
+			is_started_with_word   -- the Maker has started a game with the word "silky".
+		deferred
+			-- the Breaker joins the Makers game.
+		ensure
+			is_valid_guess   -- the Breaker must guess a word with 5 characters.
+			and then is_same_word   -- the Breaker must guess the exact word!
+	end
+
+
+
+feature -- Constants
+
+
+
+note
+
+end
+```
