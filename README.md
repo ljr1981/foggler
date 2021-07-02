@@ -280,3 +280,10 @@ There are a number of sources and resources that have inspired this work and con
 [AB Testing Podcast](https://open.spotify.com/show/1CrWfV0KNH9HevtsFut1iI)
 [Theory of Constraints](https://en.wikipedia.org/wiki/Theory_of_constraints)
 [How to Measure Anything](https://www.google.com/books/edition/How_to_Measure_Anything/F0i6pwAACAAJ?hl=en)
+
+# Release Notes
+## 0.0.0.1 — Initial Release
+## 0.0.0.2 — Bug Fix
+- Fixed an indenting issue with the `end` keyword at the end of command (method) routines.
+## 0.0.0.3
+- Added logging facility code. Nothing is presently being logged, but the capacity is there. Now, it is time to decide what would be helpful to know from a log file (`system.log`) for Foggler.
