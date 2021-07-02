@@ -285,5 +285,5 @@ There are a number of sources and resources that have inspired this work and con
 ## 0.0.0.1 — Initial Release
 ## 0.0.0.2 — Bug Fix
 - Fixed an indenting issue with the `end` keyword at the end of command (method) routines.
-## 0.0.0.3
+## 0.0.0.3 — Added Logging
 - Added logging facility code. Nothing is presently being logged, but the capacity is there. Now, it is time to decide what would be helpful to know from a log file (`system.log`) for Foggler.
