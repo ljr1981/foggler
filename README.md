@@ -288,6 +288,8 @@ There are a number of sources and resources that have inspired this work and con
 3. [How to Measure Anything](https://www.google.com/books/edition/How_to_Measure_Anything/F0i6pwAACAAJ?hl=en)
 
 # Release Notes
+## version 0.0.0.4 — Bug Fix - Added missing _imp on generated file name
+- When giving Foggler just an input file name and letting it compute the output file name from the specifiction, the generated file was missing the "_imp" on the end. This was causing a warning in EiffelStudio at compile-time. The file name now matches the class name.
 ## version 0.0.0.3 — Added Logging
 - Added logging facility code. Nothing is presently being logged, but the capacity is there. Now, it is time to decide what would be helpful to know from a log file (`system.log`) for Foggler.
 ## version 0.0.0.2 — Bug Fix
