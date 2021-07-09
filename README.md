@@ -290,6 +290,8 @@ There are a number of sources and resources that have inspired this work and con
 3. [How to Measure Anything](https://www.google.com/books/edition/How_to_Measure_Anything/F0i6pwAACAAJ?hl=en)
 
 # Release Notes
+## version 0.0.0.7 — Added support of commas and ampersand chars in feature multiline notes
+- The specification now includes support for comma and ampersand character in the Feature part multiline sentence notes.
 ## version 0.0.0.6 — Fixed a rather icky/sticky/tricky CAT-call bug
 - CAT call bugs are very difficult to find. Thankfully, Eiffel gave me the raw clues I needed to find and fix. The symptom was that foggler was not producing the right output code from the BDD spec. It was stopping short. This is because it was failing on a CAT-call and then dumping out to an exception trace log file. Those two items pointed the way to finding and fixing the bug, which was pretty simple once I saw it—that is—the code has type-anchor features that were not properly set for the new BDD_FEATURE_PART class and its parent BDD_TITLE_PART.
 ## version 0.0.0.5 — Added Feature part to specification grammar
