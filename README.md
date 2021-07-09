@@ -78,6 +78,8 @@ NOTE: Do not read too much into the BDD specification given. It is not here to b
 Title: 'Guess the word game.'
         <WORD_GUESS_GAME>
 
+Feature: 'Word guess game.'
+
 #The first example has three steps.#
 Scenario: 'Maker starts a game.'
            [maker_start_game] (target_word:"silky")
@@ -288,6 +290,8 @@ There are a number of sources and resources that have inspired this work and con
 3. [How to Measure Anything](https://www.google.com/books/edition/How_to_Measure_Anything/F0i6pwAACAAJ?hl=en)
 
 # Release Notes
+## version 0.0.0.5 — Added Feature part to specification grammar
+- It is now a requirement to have a `Feature:` keyword followed by a `'sentence ...'` to wrap and group `Scenario:` parts.
 ## version 0.0.0.4 — Bug Fix - Added missing _imp on generated file name
 - When giving Foggler just an input file name and letting it compute the output file name from the specifiction, the generated file was missing the "_imp" on the end. This was causing a warning in EiffelStudio at compile-time. The file name now matches the class name.
 ## version 0.0.0.3 — Added Logging
