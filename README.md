@@ -279,6 +279,9 @@ feature -- Constants
 
 
 note
+description: "[
+Word guess game.
+]"
 
 end
 ```
