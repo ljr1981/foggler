@@ -279,6 +279,9 @@ feature -- Constants
 
 
 note
+description: "[
+Word guess game.
+]"
 
 end
 ```
@@ -290,6 +293,8 @@ There are a number of sources and resources that have inspired this work and con
 3. [How to Measure Anything](https://www.google.com/books/edition/How_to_Measure_Anything/F0i6pwAACAAJ?hl=en)
 
 # Release Notes
+## version 0.0.0.8 — Feature sentences now appear as class note descriptions at the end of the class text.
+- Use a double-dash to indicate a CRLF to Foggler on a multiline sentence (i.e. "--" at the end of a line to indicate a CFLF in the generated note description multi-line text.
 ## version 0.0.0.7 — Added support of commas and ampersand chars in feature multiline notes
 - The specification now includes support for comma and ampersand character in the Feature part multiline sentence notes.
 ## version 0.0.0.6 — Fixed a rather icky/sticky/tricky CAT-call bug
