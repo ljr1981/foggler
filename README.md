@@ -193,7 +193,7 @@ note
 	description: "Guess the word game."
 
 deferred class
-	WORD_GUESS_GAME_IMP
+	WORD_GUESS_GAME_BDD
 	
 feature -- Access
 
