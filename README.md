@@ -2,7 +2,7 @@
 A BDD ([Behavior Driven Development](https://en.wikipedia.org/wiki/Behavior-driven_development)) Spec to [Eiffel](https://www.eiffel.org) Class and Test Class Generator
 
 ## Introduction
-Foggler has a single purpose: input BDD specification text files and then output raw Eiffel class code `{*_IMP}` in `*.e` files.
+Foggler has a single purpose: input BDD specification text files and then output raw Eiffel class code `{*_BDD}` in `*.e` files.
 
 Foggler was inspired by [Cucumber and Gherkin](https://cucumber.io/tools/cucumberstudio/?&utm_medium=ppcg&utm_source=aw&utm_term=cucumber%20gherkin&utm_content=481541387919&utm_campaign=%7bcampaign%7d&awsearchcpc=1&gclid=Cj0KCQjw8vqGBhC_ARIsADMSd1C8NC_IDG3G7b9DaN1h1eIJOXL8lt5Lt-gUc5JUu2q7CseQBNBHjkUaAsDGEALw_wcB&gclsrc=aw.ds), but is being adapted for generating Eiffel code for consumption in [EiffelStudio™](https://www.eiffel.com/eiffelstudio/).
 
@@ -124,7 +124,7 @@ note
 	description: "Guess the word game."
 
 deferred class
-	WORD_GUESS_GAME_IMP
+	WORD_GUESS_GAME_BDD
 ```
 The `Guess the word game.` string is used for the class `note` description. The note clause also includes a `warning` against editing the class as subsequent modifications to the source BDD specification and subsequent regeneration will possibly overwrite the class text, thereby destroying your edits. It is better to inherit from the `IMP` class and then modify the descendent (sub) class.
 
